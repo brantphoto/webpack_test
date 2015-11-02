@@ -1,0 +1,30 @@
+html, body {
+  height: 100%
+}
+
+body {
+  background: #D7447D;
+  color: #fff;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  border: 5px solid #fff;
+  border-radius: 2px;
+  padding: 25px;
+
+}
+
+h1:hover {
+  background-color: #FFB60E;
+  border-color: #FFB60E;
+  color: #523421;
+}
+
+
+.title-hover {
+  padding: 50px;
+}
