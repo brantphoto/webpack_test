@@ -1,5 +1,5 @@
 html, body {
-  height: 100%
+  height: 100%;
 }
 
 body {
@@ -12,10 +12,10 @@ body {
 }
 
 h1 {
-  border: 5px solid #fff;
   border-radius: 2px;
+  border: 5px solid #fff;
   padding: 25px;
-
+  text-align: center;
 }
 
 h1:hover {
