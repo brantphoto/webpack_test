@@ -47,6 +47,12 @@
 	__webpack_require__(1);
 	document.write(__webpack_require__(5));
 
+	var init = __webpack_require__(6);
+	init();
+
+
+
+
 
 /***/ },
 /* 1 */
@@ -64,8 +70,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./node_modules/css-loader/index.js!./style.css", function() {
-				var newContent = require("!!./node_modules/css-loader/index.js!./style.css");
+			module.hot.accept("!!./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./style.less", function() {
+				var newContent = require("!!./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./style.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -83,7 +89,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background: yellow;\n}\n", ""]);
+	exports.push([module.id, "html,\nbody {\n  height: 100%;\n}\nbody {\n  background: #D7447D;\n  color: #fff;\n  font-size: 2em;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\nh1 {\n  border-radius: 2px;\n  cursor: pointer;\n  border: 5px solid #fff;\n  padding: 25px;\n  text-align: center;\n}\nh1:hover {\n  background-color: #FFB60E;\n  border-color: #FFB60E;\n  color: #523421;\n}\n.title-hover {\n  padding: 50px;\n}\n", ""]);
 
 	// exports
 
@@ -402,7 +408,75 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "It works from content.js";
+	module.exports = '<h1 id="example">Welcome friends</h1>';
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	function init() {
+	  var el = document.getElementById('example');
+
+	  el.addEventListener('mouseover', function(event) {
+
+	    event.stopImmediatePropagation();
+	    var padding = el.style.padding;
+
+	    if (typeof padding === 'string') {
+	      padding = parseInt(padding, 10) || 25;
+	    }
+
+	    if (padding <= 50) {
+	      animateTitleGrow(el);
+	    }
+
+	    function animateTitleGrow(element) {
+
+	      function frame() {
+	        padding++;
+	        element.style.padding = padding + 'px';
+	        if (padding >= 50) {
+	          clearInterval(id);
+	        }
+	      }
+
+	      var id = setInterval(frame, 5);
+
+	    }
+
+	  });
+
+	  el.addEventListener('mouseleave', function(event) {
+
+	    event.stopImmediatePropagation();
+	    var padding = el.style.padding;
+
+	    if (typeof padding === 'string') {
+	      padding = parseInt(padding, 10) || 60;
+	    }
+
+	    if (padding >= 26) {
+	      animateTitleShrink(el);
+	    }
+
+	    function animateTitleShrink(element) {
+
+	      function frame() {
+	        padding--;
+	        element.style.padding = padding + 'px';
+
+	        if (padding <= 25) {
+	          clearInterval(id);
+	        }
+	      }
+
+	      var id = setInterval(frame, 5);
+	    }
+	  });
+	}
+
+	module.exports = init;
 
 
 /***/ }

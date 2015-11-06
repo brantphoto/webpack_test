@@ -1,5 +1,4 @@
-require("!style!css!./style.css");
-document.write(require("./content.js"));
+require("!style!css!less!./style.less");
 
 var init = require('./scripts/init');
 init();
